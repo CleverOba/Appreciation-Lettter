@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Appreciation Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #ffe4ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      font-family: 'Open Sans', Arial, sans-serif;
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      width: 30px;
+      height: 30px;
+      background: #ffb6c1;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      transform: rotate(-45deg);
+      opacity: 0.7;
+      animation: floatHearts 8s linear infinite;
+      z-index: 1;
+    }
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #ffb6c1;
+      border-radius: 50%;
+    }
+    .heart:before {
+      top: -15px;
+      left: 0;
+    }
+    .heart:after {
+      left: 15px;
+      top: 0;
+    }
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) scale(1) rotate(-45deg);
+        opacity: 0.7;
+      }
+      80% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.2) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Letter paper styling */
+    .letter-container {
+      position: relative;
+      z-index: 2;
+      width: 90vw;
+      max-width: 430px;
+      min-height: 60vw;
+      max-height: 80vh;
+      background: linear-gradient(135deg, #fff0f6 0%, #ffd6e0 100%);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(255, 182, 193, 0.25), 0 2px 8px #f8bbd0;
+      border: 4px double #ffb6c1;
+      padding: 2.5rem 1.5rem;
+      margin: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .letter-container:hover {
+      box-shadow: 0 12px 40px rgba(255, 182, 193, 0.35), 0 4px 16px #f8bbd0;
+    }
+    .decor-top, .decor-bottom {
+      position: absolute;
+      left: 0; right: 0;
+      height: 40px;
+      pointer-events: none;
+      background-repeat: repeat-x;
+      opacity: 0.5;
+    }
+    .decor-top {
+      top: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="40" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="20" rx="45" ry="15" fill="%23ffb6c1" opacity="0.3"/><ellipse cx="50" cy="20" rx="30" ry="10" fill="%23fff0f6" opacity="0.5"/></svg>');
+    }
+    .decor-bottom {
+      bottom: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="40" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="20" rx="45" ry="15" fill="%23ffb6c1" opacity="0.3"/><ellipse cx="50" cy="20" rx="30" ry="10" fill="%23fff0f6" opacity="0.5"/></svg>');
+      transform: scaleY(-1);
+    }
+
+    .letter-message {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.4,2,.6,1), transform 0.7s cubic-bezier(.4,2,.6,1);
+      text-align: center;
+      font-size: 1.1rem;
+      color: #b71c5a;
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      max-width: 100%;
+      margin: 0;
+      user-select: text;
+    }
+    .letter-container.open .letter-message {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .letter-sign {
+      display: block;
+      margin-top: 2.5rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #e75480;
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 600px) {
+      .letter-container {
+        padding: 1.2rem 0.7rem;
+        min-height: 60vw;
+        max-width: 98vw;
+      }
+      .letter-sign {
+        font-size: 1.3rem;
+        margin-top: 1.2rem;
+      }
+    }
+    @media (max-width: 400px) {
+      .letter-container {
+        padding: 0.7rem 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating hearts -->
+  <div class="heart" style="left:10vw; animation-delay:0s;"></div>
+  <div class="heart" style="left:30vw; animation-delay:2s;"></div>
+  <div class="heart" style="left:60vw; animation-delay:4s;"></div>
+  <div class="heart" style="left:80vw; animation-delay:1s;"></div>
+  <div class="heart" style="left:50vw; animation-delay:3s;"></div>
+
+  <div class="letter-container" id="letterPaper" tabindex="0" aria-label="Click to reveal appreciation letter">
+    <div class="decor-top"></div>
+    <div class="decor-bottom"></div>
+    <div class="letter-message" id="letterMessage">
+      <span style="font-family:'Great Vibes',cursive; font-size:1.5rem; color:#e75480;">Hello Mrs Ada,</span><br>
+      <span style="font-size:1.1rem; color:#b71c5a;">Good afternoon ma.</span>
+      <br><br>
+      Ma this is a letter of appreciation to tell you thank you for all you have done for us, thank you for keeping us together, and thank you for making coding part of our life's. May your new job give you less stress and more money gradually in the mighty name of Jesus. Thank you, ma.
+      <br><br>
+      <span style="font-size:2rem; color:#e75480;">.....</span>
+      <br>
+      <span class="letter-sign">From Oba</span>
+    </div>
+  </div>
+
+  <!-- Optional: Gentle background music (auto-play is restricted on most browsers, so user must interact first) -->
+  <audio id="bgMusic" src="https://cdn.pixabay.com/audio/2022/10/16/audio_12b5b5f7e7.mp3" loop></audio>
+
+  <script>
+    // Reveal message on click
+    const letter = document.getElementById('letterPaper');
+    const message = document.getElementById('letterMessage');
+    const audio = document.getElementById('bgMusic');
+    let opened = false;
+
+    letter.addEventListener('click', function() {
+      if (!opened) {
+        letter.classList.add('open');
+        // Play music if not already playing
+        if (audio && audio.paused) {
+          audio.volume = 0.25;
+          audio.play().catch(()=>{});
+        }
+        opened = true;
+      }
+    });
+
+    // Accessibility: allow Enter/Space to open
+    letter.addEventListener('keydown', function(e) {
+      if ((e.key === 'Enter' || e.key === ' ') && !opened) {
+        letter.click();
+      }
+    });
+  </script>
+</body>
+</html>
